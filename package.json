@@ -1,0 +1,24 @@
+{
+  "name": "rateing",
+  "version": "1.0.0",
+  "description": "Please enjoy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "6.11.5"
+  },
+  "keywords": [],
+  "comment": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "express-graphql": "^0.6.12",
+    "graphql": "^14.0.2",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.2.16",
+    "react-js-pagination": "^3.0.2"
+  }
+}
