@@ -33,7 +33,6 @@ class MarketNews extends Component {
 
   displayArticles = () => {
     const { articles } = this.state.news;
-    console.log("THINGS: ", articles);
     if(articles) {
       return (
         <div>

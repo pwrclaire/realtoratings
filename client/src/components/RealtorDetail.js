@@ -55,7 +55,6 @@ class RealtorDetails extends Component {
   fetchCount = () => {
     const realtor = this.props.data.realtor;
     if(realtor) {
-      console.log('hello fetch count');
       const numComments = realtor.comments.length;
       const knowledge = realtor.comments.map(k => k.knowledge).reduce((a, b) => a + b, 0);
       const responsiveness = realtor.comments.map(k => k.responsiveness).reduce((a, b) => a + b, 0);
@@ -74,7 +73,6 @@ class RealtorDetails extends Component {
   fetchRating = () => {
     const realtor = this.props.data.realtor;
     if(realtor) {
-      console.log('hello fetch rating');
       return realtor.comments.sort(this.dynamicSort(this.state.sort)).map(c => {
       return (
         <div className="col s12" key={c.id}>
