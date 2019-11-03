@@ -51,8 +51,7 @@ class Rating extends Component {
           interest: this.state.rating.interest,
           professionalism: this.state.rating.professionalism,
           realtorId: this.props.id,
-          dateCreated: moment(),
-          starTotal: this.state.rating.knowledge + this.state.rating.responsiveness + this.state.rating.interest + this.state.rating.professionalism
+          dateCreated: moment()
         }
       });
       this.setState({

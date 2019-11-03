@@ -185,23 +185,25 @@ const Mutation = new GraphQLObjectType({
         interest: { type: GraphQLInt},
         professionalism: { type: GraphQLInt},
         realtorId: { type: GraphQLID },
-        dateCreated: { type: GraphQLString },
-        starTotal: { type: GraphQLInt }
+        dateCreated: { type: GraphQLString }
       },
-      resolve(parent, args) {
+      resolve(parent, {text, knowledge, responsiveness, interest, professionalism, realtorId, dateCreated}) {
+        console.log(text, knowledge, responsiveness, interest, professionalism, realtorId, dateCreated);
+        const score = calculateScore(knowledge, responsiveness, interest, professionalism);
+        // const score = knowledge + responsiveness + interest + professionalism;
         let comment = new Comment({
-          text: args.text,
-          knowledge: args.knowledge,
-          responsiveness: args.responsiveness,
-          interest: args.interest,
-          professionalism: args.professionalism,
-          realtorId: args.realtorId,
-          dateCreated: args.dateCreated,
-          starTotal: args.starTotal
+          text: text,
+          knowledge: knowledge,
+          responsiveness: responsiveness,
+          interest: interest,
+          professionalism: professionalism,
+          realtorId: realtorId,
+          dateCreated: dateCreated,
+          starTotal: score
         });
         comment.save();
         return Realtor.findByIdAndUpdate(
-          { _id: args.realtorId },
+          { _id: realtorId },
           { $push: { comments: comment.id } }
         )
       }
@@ -315,6 +317,10 @@ const Mutation = new GraphQLObjectType({
     }
   }
 });
+
+calculateScore = (knowledge, responsiveness, interest, professionalism) => {
+  return knowledge + responsiveness + interest + professionalism;
+}
 
 module.exports = new GraphQLSchema({
   query: RootQuery,
