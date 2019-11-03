@@ -18,7 +18,7 @@
     "express-graphql": "^0.6.12",
     "graphql": "^14.0.2",
     "lodash": "^4.17.11",
-    "mongoose": "^5.2.16",
+    "mongoose": "^5.7.5",
     "react-js-pagination": "^3.0.2"
   }
 }
