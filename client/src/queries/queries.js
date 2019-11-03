@@ -113,14 +113,13 @@ const updateRealtorMutation = gql`
 `
 
 const addCommentMutation = gql`
-  mutation AddComment($text: String!, $knowledge: Int!, $responsiveness: Int!, $interest: Int!, $professionalism: Int!, $realtorId: ID!, $starTotal: Int!, $dateCreated: String!) {
-    addComment(text: $text, knowledge: $knowledge, responsiveness: $responsiveness, interest: $interest, professionalism: $professionalism, realtorId: $realtorId, starTotal: $starTotal, dateCreated: $dateCreated) {
+  mutation AddComment($text: String!, $knowledge: Int!, $responsiveness: Int!, $interest: Int!, $professionalism: Int!, $realtorId: ID!, $dateCreated: String!) {
+    addComment(text: $text, knowledge: $knowledge, responsiveness: $responsiveness, interest: $interest, professionalism: $professionalism, realtorId: $realtorId, dateCreated: $dateCreated) {
       text
       knowledge
       responsiveness
       interest
       professionalism
-      starTotal
       dateCreated
     }
   }

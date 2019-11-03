@@ -86,7 +86,7 @@ class RealtorDetails extends Component {
             <div className="card-content col s6">
               <ul>
                 <li>Knowledge: <b>{c.knowledge}</b></li>
-                <li>Putting your interest fist: <b>{c.interest}</b></li>
+                <li>Putting your interest first: <b>{c.interest}</b></li>
                 <li>Professionalism: <b>{c.professionalism}</b></li>
                 <li>Responding to your requests: <b>{c.responsiveness}</b></li>
               </ul>

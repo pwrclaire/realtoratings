@@ -29,8 +29,6 @@ class RealtorList extends Component {
     // Typical usage (don't forget to compare props):
     if (this.state.realtors.length === 0) {
       this.fetchRealtors();
-      // console.log(prevProps);
-      // console.log("Update w/prevProp function ", prevProps);
     } else {
       console.log(this.state.realtors);
     }
@@ -135,41 +133,41 @@ class RealtorList extends Component {
       const currentRealtors = realtors.slice(indexOfFirstPage, indexOfLastPage);
       
       const renderRealtors = currentRealtors.map(r => {
-      const { comments } = r;
-      const numComments = comments.length;
-      const knowledge = comments.map(k => k.knowledge).reduce((a, b) => a + b, 0);
-      const responsiveness = comments.map(k => k.responsiveness).reduce((a, b) => a + b, 0);
-      const interest = comments.map(k => k.interest).reduce((a, b) => a + b, 0);
-      const professionalism = comments.map(k => k.professionalism).reduce((a, b) => a + b, 0);
-      const sum = (knowledge + responsiveness + interest + professionalism) / (4 * numComments);
-      let avatar;
-      if(r.id === '5bec83306723f504184cc8cb') {
-        avatar = require('../image/avatar-1.png');
-      } else if (r.id === '5bec833f6723f504184cc8cd') {
-        avatar = require('../image/avatar-2.png');
-      } else if (r.id === '5bec83876723f504184cc8d5') {
-        avatar = require('../image/avatar-3.png');
-      } else {
-        avatar = require('../image/avatar.png');
-      }
-        return <div className="card" key={r.id}>
-            <div className="card-content">
-              <div className="col s1">
-                <img
-                  src={avatar}
-                  alt="avatar"
-                  width="50px"
-                />
-              </div>
-              <div className="col s11">
-                <h5>
-                  <Link to={`/realtor/${r.id}`}>{r.name}</Link>
-                </h5>
-                <p>Company: {r.companyId.map(n => n.name)}</p>
-                <p>Overall Rating {!isNaN(sum) ? sum.toFixed(2) : "No Ratings Yet"}</p>
+        const { comments } = r;
+        const numComments = comments.length;
+        const knowledge = comments.map(k => k.knowledge).reduce((a, b) => a + b, 0);
+        const responsiveness = comments.map(k => k.responsiveness).reduce((a, b) => a + b, 0);
+        const interest = comments.map(k => k.interest).reduce((a, b) => a + b, 0);
+        const professionalism = comments.map(k => k.professionalism).reduce((a, b) => a + b, 0);
+        const sum = (knowledge + responsiveness + interest + professionalism) / (4 * numComments);
+        let avatar;
+        if(r.id === '5bec83306723f504184cc8cb') {
+          avatar = require('../image/avatar-1.png');
+        } else if (r.id === '5bec833f6723f504184cc8cd') {
+          avatar = require('../image/avatar-2.png');
+        } else if (r.id === '5bec83876723f504184cc8d5') {
+          avatar = require('../image/avatar-3.png');
+        } else {
+          avatar = require('../image/avatar.png');
+        }
+          return <div className="card" key={r.id}>
+              <div className="card-content">
+                <div className="col s1">
+                  <img
+                    src={avatar}
+                    alt="avatar"
+                    width="50px"
+                  />
+                </div>
+                <div className="col s11">
+                  <h5>
+                    <Link to={`/realtor/${r.id}`}>{r.name}</Link>
+                  </h5>
+                  <p>Company: {r.companyId.map(n => n.name)}</p>
+                  <p>Overall Rating {!isNaN(sum) ? sum.toFixed(2) : "No Ratings Yet"}</p>
+                </div>
               </div>
             </div>
-          </div>
       })
   
       const pageNumbers = [];

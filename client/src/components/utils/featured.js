@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const featuredAgent = ({realtor, img, identity}) => (
     <div className="col s12 m4">
+    <Link to={`/realtor/${identity}`}>
       <div className="card">
         <div className="card-image">
           <img src={require(`../../image/avatar-${img}.png`)} alt=""/>
@@ -12,13 +13,16 @@ const featuredAgent = ({realtor, img, identity}) => (
             {realtor}
           </h5>
         </div>
-         <div className="card-action">
-            <Link to={`/realtor/${identity}`}>Select</Link>
-          </div>
         </div>
       </div>
+      </Link>
     </div>
 )
 
+const style = {
+  pointer: {
+    cursor: 'pointer'
+  }
+}
 
 export default featuredAgent;
