@@ -29,13 +29,10 @@ class RealtorList extends Component {
     // Typical usage (don't forget to compare props):
     if (this.state.realtors.length === 0) {
       this.fetchRealtors();
-    } else {
-      console.log(this.state.realtors);
     }
   }
 
   componentDidMount() {
-    console.log("DID MOUNT LIST:", this.state.realtors);
     if(this.state.realtors.length === 0) {
       this.fetchRealtors();
     }
@@ -56,7 +53,6 @@ class RealtorList extends Component {
 
   fetchRealtors = () => {
     const data = this.props.getrealtorsQuery;
-    console.log(data);
     if (data.loading) {
       return (
         <div className="row">
@@ -69,7 +65,6 @@ class RealtorList extends Component {
       this.setState({
         realtors: data.realtors.sort(this.dynamicSort(this.state.sortBy))
       });
-      console.log("FETCH function: ", this.state);
     }
   };
 
@@ -84,13 +79,11 @@ class RealtorList extends Component {
     this.setState({
       sortBy: e.target.value
     })
-    console.log("Now sorting by:", e.target.value);
   }
 
   togglePage = (e) => {
     // e.preventDefault();
     const lastPage = this.state.realtors.length / this.state.perPage;
-    console.log("Current page: ", this.state.currentPage);
     if(this.state.currentPage === 1) {
       this.setState({
         disableLeft: 'disabled'
@@ -105,8 +98,8 @@ class RealtorList extends Component {
       // return;
     }
 
-    console.log(e);
-    console.log(this.state.currentPage);
+    // console.log(e);
+    // console.log(this.state.currentPage);
     this.setState(prevState => {
        return {currentPage: e === 'left' ? prevState.currentPage - 1 : prevState.currentPage + 1 };
       })
@@ -177,7 +170,7 @@ class RealtorList extends Component {
 
       // const cName = 'waves-effect' + active ? ' ' : '-';
       const renderPageNumbers = pageNumbers.map(number => {
-        const cName = number == currentPage ? 'waves-effect active' : 'waves-effect';
+        const cName = number === currentPage ? 'waves-effect active' : 'waves-effect';
         return (
           <li className={cName}
             key={number}
