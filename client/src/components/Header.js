@@ -1,41 +1,51 @@
 import React from "react";
-import { LoginButton } from "./LoginButton";
-import { LogoutButton } from "./LogoutButton";
+import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 import { Profile } from "./Profile";
+import { useAuth0 } from "@auth0/auth0-react";
+import { LoginButton } from "./LoginButton";
+
+const Nav = styled.nav`
+  display: flex;
+  background-color: teal;
+  justify-content: space-between;
+`;
+
+const NavChild = styled.span`
+  padding: 2px;
+`;
 
 const Header = ({ props }) => {
   const { isAuthenticated } = useAuth0();
   return (
-    <>
-      <nav>
-        <div className="nav-wrapper teal">
-          <a href="/" className="brand-logo center hide-on-small-only">
-            Rate My Realtor.com
-          </a>
-          <a href="/" className="brand-logo center hide-on-med-and-up">
-            RMR.com
-          </a>
-          <ul id="nav-mobile" className="right">
-            <li>
-              <Link to={"/realtor"}>Realtors</Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <div>
+    <Nav>
+      <NavChild>
         {" "}
         {isAuthenticated ? (
           <>
             <Profile />
-            <LogoutButton style={{ paddingLeft: "70px" }} />
           </>
         ) : (
           <LoginButton />
         )}
-      </div>
-    </>
+      </NavChild>
+      <NavChild>
+        <a href="/" className="brand-logo center hide-on-small-only">
+          Rate My Realtor.com
+        </a>
+        <a href="/" className="brand-logo center hide-on-med-and-up">
+          RMR.com
+        </a>
+      </NavChild>
+
+      <NavChild>
+        <ul id="nav-mobile" className="right">
+          <li>
+            <Link to={"/realtor"}>Realtors</Link>
+          </li>
+        </ul>
+      </NavChild>
+    </Nav>
   );
 };
 
