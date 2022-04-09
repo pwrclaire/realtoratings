@@ -8,7 +8,7 @@
     "apollo-boost": "^0.1.16",
     "graphql": "^14.0.2",
     "materialize-css": "^1.0.0-rc.2",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "react": "^16.13.1",
     "react-apollo": "^2.1.11",
     "react-autosuggest": "^9.4.2",
